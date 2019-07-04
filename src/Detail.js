@@ -1,11 +1,13 @@
 import React from 'react';
-
-
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import LinesEllipsis from 'react-lines-ellipsis';
 
-const Detail = ({ match: {params: {movieId}} }) => {
+const Detail = ({ 
+    match: {
+        params: { movieId }
+    }
+}) => {
     console.log(movieId);
     return <div>Detail</div>;
 };
