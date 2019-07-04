@@ -1,6 +1,9 @@
 import React from 'react';
+import Movie from './Movie';
+import styled from 'styled-components';
 import { Query } from 'react-apollo';
 import { HOME_PAGE } from './queries';
+
 
 const Home = () => (
   <Query query={HOME_PAGE}>
@@ -13,20 +16,25 @@ const Home = () => (
         }
         if(data) {
             console.log(data);
-            return data.movies.map(movie => (
-                
-                <h2 key={movie.id}>
-                    {movie.title} / {movie.rating} 
-                    
-                    <img src={movie.medium_cover_image} alt={movie.title} title={movie.title}>
-                    </img>
-                </h2>
+            return (
 
-                
-            ));
+                    data.movies.map(movie => (
+                        <Movie
+                            key={movie.id}
+                            id={movie.id}
+                            title={movie.title}
+                            rating={movie.rating}
+                            poster={movie.medium_cover_image}
+                            genres={movie.genres}
+                            summary={movie.summary}
+                            language={movie.language}
+                        />))); 
+
+
         }
     }}
   </Query>
 );
+
 
 export default Home;
